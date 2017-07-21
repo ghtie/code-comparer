@@ -1,2 +1,2 @@
 # code-comparer
-GoogIe
+googie

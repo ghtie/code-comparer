@@ -33,16 +33,18 @@ class MainHandler(webapp2.RequestHandler):
         #Construct All
         #tableitem.constructAll()
 
-        java_data = TableItem.query(TableItem.language == 'Java').fetch()
-
+        java_data = TableItem.query(TableItem.language == 'Java').fetch(limit=100)
+        java_list = ""
+        for item in java_data:
+            java_list += (item.find + '\t')
+            
         template_vars = {
-        'java_items': java_data         #{{ java_items }} in the html
+        'java_items': java_list         #{{ java_items }} in the html
         }
 
 
         template = env.get_template('templates/index.html')
         self.response.out.write(template.render(template_vars))
-
 
 
 

@@ -1,18 +1,49 @@
-$(document).ready(function() {
-    $("#check_button").click(function() {
-      $('div.flex-item2, div.flex-item5 ').toggle();
-    });
+$(document).ready(setup);
 
-});
-$(document).ready(function() {
-    $("#check_button2").click(function() {
-      $('div.flex-item3, div.flex-item6').toggle();
-    });
+//Setup Functions
+function syntaxChoice() {
+  $("#java").click(displayJava);
+  $("#javascript").click(displayJavascript);
+  $("#python").click(displayPython);
+}
 
-});
-$(document).ready(function() {
-    $("#check_button3").click(function() {
-      $('div.flex-item4, div.flex-item7').toggle();
-    });
+function loadChecked() {
+    $(".language-box").prop("checked", true);
+}
 
-});
+function handleExample() {
+    $("#test").click(slidePanel);
+}
+
+function slidePanel() {
+    $("#panel, .js-col").slideDown("slow");
+}
+
+
+
+//Toggle Functions
+function displayJava() {
+  $('.j-col').toggle();
+}
+
+function displayJavascript() {
+  $('.js-col').toggle();
+}
+
+function displayPython() {
+  $('.p-col').toggle();
+}
+
+
+
+
+function setup() {
+    syntaxChoice();
+    loadChecked();
+    handleExample();
+}
+
+window.onload=loadChecked;
+
+
+//$(document).ready(function() {$('#test').append('<div class="flex-item4"><br>box 6<div>)'}

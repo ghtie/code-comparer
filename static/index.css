@@ -1,9 +1,10 @@
 
+
 h1{
   color: green;
 }
 body {
-  background-color: 80ff00;
+  background-color: grey;
 }
 .flex-container {
     display: -webkit-flex;
@@ -73,4 +74,5 @@ div.flex-item3 {
     width: 166px;
     height:100%;
     margin: 5px;
+>>>>>>> 0f3e89154c38df6ce50f3acdc8cdd16ee0800794
 }

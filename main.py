@@ -32,8 +32,8 @@ class MainHandler(webapp2.RequestHandler):
         template = env.get_template('templates/index.html')
         self.response.out.write(template.render())
 
-        #Sample Entity
-        tableitem.construct('jsgkhsgj', 'askjdfk', 'asdf').put()
+        #Construct All
+        tableitem.constructAll()
 
 
 app = webapp2.WSGIApplication([

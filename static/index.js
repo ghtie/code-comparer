@@ -1,18 +1,37 @@
-$(document).ready(function() {
-    $("#check_button").click(function() {
-      $('div.flex-item2, div.flex-item5 ').toggle();
-    });
+$(document).ready(syntaxChoice);
 
-});
-$(document).ready(function() {
-    $("#check_button2").click(function() {
-      $('div.flex-item3, div.flex-item6').toggle();
-    });
+function syntaxChoice(){
+  $("#java").click(displayJava)
+  $("#javascript").click(displayJavascript)
+  $("#python").click(displayPython)
+}
 
-});
-$(document).ready(function() {
-    $("#check_button3").click(function() {
-      $('div.flex-item4, div.flex-item7').toggle();
-    });
+function displayJava(){
+  $('div.flex-item2, div.flex-item5 ').toggle();
+}
 
-});
+function displayJavascript(){
+  $('div.flex-item3, div.flex-item6').toggle();
+}
+
+function displayPython(){
+  $('div.flex-item4, div.flex-item7').toggle();
+}
+window.onload=function()
+ {
+   if (document.getElementById)
+   {
+var c = document.getElementById("java");
+           c.checked = true;
+}
+if (document.getElementById)
+{
+var d = document.getElementById("javascript");
+        d.checked = true;
+}
+if (document.getElementById)
+{
+var e = document.getElementById("python");
+        e.checked = true;
+}
+}

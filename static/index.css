@@ -25,24 +25,6 @@ body {
     height:100%;
     margin: 5px;
 }
-div.flex-item2 {
-    display:none;
-}
-div.flex-item3 {
-    display:none;
-  }
-  div.flex-item4 {
-      display:none;
-    }
-    div.flex-item5 {
-        display:none;
-      }
-      div.flex-item6 {
-          display:none;
-        }
-        div.flex-item7 {
-            display:none;
-          }
 
 .flex-item2 {
     background-color: green;

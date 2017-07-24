@@ -1,3 +1,4 @@
+
 $(document).ready(syntaxChoice);
 
 function syntaxChoice(){
@@ -5,7 +6,11 @@ function syntaxChoice(){
   $("#javascript").click(displayJavascript)
   $("#python").click(displayPython)
 }
-
+$(document).ready(function(){
+    $("#loop").click(function(){
+        $("#panel, div.flex-item2 ").slideDown("slow");
+    });
+});
 function displayJava(){
   $('div.flex-item2, div.flex-item5 ').toggle();
 }

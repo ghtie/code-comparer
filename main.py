@@ -22,6 +22,7 @@ import sys
 sys.path.append('source/')
 #import source code
 import tableitem
+from tableitem import TableItem
 
 
 env = jinja2.Environment(
@@ -29,11 +30,20 @@ env = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('templates/index.html')
-        self.response.out.write(template.render())
-
         #Construct All
-        tableitem.constructAll()
+        #tableitem.constructAll()
+
+        java_data = TableItem.query(TableItem.language == 'Java').fetch()
+
+        template_vars = {
+        'java_items': java_data         #{{ java_items }} in the html
+        }
+
+
+        template = env.get_template('templates/index.html')
+        self.response.out.write(template.render(template_vars))
+
+
 
 
 app = webapp2.WSGIApplication([

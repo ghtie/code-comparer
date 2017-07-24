@@ -134,6 +134,6 @@ def constructAll():
     construct('while (condition):\n\t...', 'Python', 'Loops','p_whileloop', 'While Loop').put()
 
     #List Constructor
-    construct('List myList = new ArrayList()', 'Java', 'Lists', 'j_list', 'Dynamic List').put()
-    construct('var myList = [item1, item2, ...]', 'Javascript', 'Lists','js_list', 'Dynamic List').put()
-    construct('myList = [item1, item2, ...]','Python', 'Lists','p_list', 'Dynamic List').put()
+    construct('List myList = new ArrayList()', 'Java', 'Lists', 'j_listconstruct', 'Dynamic List').put()
+    construct('var myList = [item1, item2, ...]', 'Javascript', 'Lists','js_listconstruct', 'Dynamic List').put()
+    construct('myList = [item1, item2, ...]','Python', 'Lists','p_listconstruct', 'Dynamic List').put()

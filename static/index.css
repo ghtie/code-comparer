@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-th{
-  border: 1px solid #dddddd;
- padding: 8px;
-}
-table{
-  border-collapse: collapse;
-  width:100%;
-  text-align: center;
-=======
-
 h1{
   color: green;
 }
@@ -23,16 +12,10 @@ body {
     background-color: lightgrey;
 }
 
-.flex-item {
-    background-color: green;
-    width: 166px;
-    height: 100%;
-    margin: 5px;
-}
 .flex-item1 {
     background-color: green;
-    width: 166px;
-    height:500px;
+    width: 160px;
+    height:100%;
     margin: 5px;
 }
 div.flex-item2 {
@@ -53,28 +36,23 @@ div.flex-item3 {
         div.flex-item7 {
             display:none;
           }
-    .flex-item1 {
-        background-color: green;
-        width: 166px;
-        height:500px;
-        margin: 5px;
-    }
+
 .flex-item2 {
     background-color: green;
-    width: 166px;
-    height:500px;
+    width: 100%;
+    height:100%;
     margin: 5px;
 }
 .flex-item3 {
     background-color: green;
-    width: 166px;
-    height:500px;
+    width: 100%;
+    height:100%;
     margin: 5px;
 }
 .flex-item4 {
     background-color: green;
-    width: 166px;
-    height:500px;
+    width: 100%;
+    height:100%;
     margin: 5px;
 }
 .flex-item5 {
@@ -94,5 +72,4 @@ div.flex-item3 {
     width: 166px;
     height:100%;
     margin: 5px;
->>>>>>> 0f3e89154c38df6ce50f3acdc8cdd16ee0800794
 }

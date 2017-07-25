@@ -1,42 +1,57 @@
+$(document).ready(setup);
 
-$(document).ready(syntaxChoice);
-
-function syntaxChoice(){
-  $("#java").click(displayJava)
-  $("#javascript").click(displayJavascript)
-  $("#python").click(displayPython)
-}
-$(document).ready(function(){
-    $("#loop").click(function(){
-        $("#panel, div.flex-item2 ").slideDown("slow");
-    });
-});
-function displayJava(){
-  $('div.flex-item2, div.flex-item5 ').toggle();
+//Setup Functions
+function syntaxChoice() {
+  $("#java").click(displayJava);
+  $("#javascript").click(displayJavascript);
+  $("#python").click(displayPython);
 }
 
-function displayJavascript(){
-  $('div.flex-item3, div.flex-item6').toggle();
+function loadChecked() {
+    $(".language-box").prop("checked", true);
 }
 
-function displayPython(){
-  $('div.flex-item4, div.flex-item7').toggle();
+function handleExample() {
+    $("#testappend").click(slidePanel);
 }
-window.onload=function()
- {
-   if (document.getElementById)
-   {
-var c = document.getElementById("java");
-           c.checked = true;
+
+function slidePanel() {
+    $("#panel").slideToggle("slow");
+
 }
-if (document.getElementById)
-{
-var d = document.getElementById("javascript");
-        d.checked = true;
+function handle() {
+    $("#testappend1").click(slide);
 }
-if (document.getElementById)
-{
-var e = document.getElementById("python");
-        e.checked = true;
+
+function slide() {
+    $("#panel2").slideToggle("slow");
+
 }
+
+
+//Toggle Functions
+function displayJava() {
+  $('.j-col').toggle();
 }
+
+function displayJavascript() {
+  $('.js-col').toggle();
+}
+
+function displayPython() {
+  $('.p-col').toggle();
+}
+
+
+
+
+function setup() {
+    syntaxChoice();
+    loadChecked();
+    handleExample();
+}
+
+window.onload=loadChecked;
+
+
+//$(document).ready(function() {$('#test').append('<div class="flex-item4"><br>box 6<div>)'}

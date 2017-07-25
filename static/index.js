@@ -35,15 +35,15 @@ $(document).ready(function(){
 
 //Toggle Functions
 function displayJava() {
-  $('.j-col').toggle();
+  $('.j-col').toggle(1000);
 }
 
 function displayJavascript() {
-  $('.js-col').toggle();
+  $('.js-col').toggle(1000);
 }
 
 function displayPython() {
-  $('.p-col').toggle();
+  $('.p-col').toggle(1000);
 }
 
 

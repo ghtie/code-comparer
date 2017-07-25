@@ -19,7 +19,7 @@ function handleExample() {
 }
 
 function testAppend() {
-    $("#testappend").append('<div class="p-col"><br>box 6</div>')
+    $("#testappend").append('<div class="p-col"><br>box 6' + field1 + '</div>')
 }
 
 

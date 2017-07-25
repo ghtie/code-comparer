@@ -18,9 +18,10 @@ import jinja2
 import os
 import webapp2
 import sys
+import json
 
 sys.path.append('source/')
-#import source code
+#Import source code
 import tableitem
 from tableitem import TableItem
 
@@ -30,24 +31,36 @@ env = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        #Construct All
-        #tableitem.constructAll()
-
+        #Querying entities from datastore
         java_data = TableItem.query(TableItem.language == 'Java').fetch(limit=100)
-        java_list = ""
-        for item in java_data:
-            java_list += (item.find + '\t')
-            
+        java_list = []
+        for third_item in java_data[::3]:
+            mini_list = []
+            for j in range(0,3):
+                mini_list.append(java_data[j].syntax)
+            java_list.append(mini_list)
+
+
+
+
         template_vars = {
-        'java_items': java_list         #{{ java_items }} in the html
+            'java_items': java_list         #{{ java_items }} in the html
         }
+
 
 
         template = env.get_template('templates/index.html')
         self.response.out.write(template.render(template_vars))
 
 
+#Only to construct entities in datastore
+class AdminHandler(webapp2.RequestHandler):
+    def get(self):
+        tableitem.constructAll()
+
+
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/admin', AdminHandler)
 ], debug=True)

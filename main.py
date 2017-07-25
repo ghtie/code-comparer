@@ -34,11 +34,13 @@ class MainHandler(webapp2.RequestHandler):
         #Querying entities from datastore
         java_data = TableItem.query(TableItem.language == 'Java').fetch(limit=100)
         java_list = []
-        for third_item in java_data[::3]:
+
+        for i in range(0, len(java_data)-3, 3):
             mini_list = []
-            for j in range(0,3):
+            for j in range(i,i+3):
                 mini_list.append(java_data[j].syntax)
             java_list.append(mini_list)
+
 
 
 

@@ -6,74 +6,64 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>        <!-- Allows JQuery -->
     <script type="text/javascript" src="static/index.js"></script>                                  <!-- Links javascript file -->
     <script>
-        {{ my_js }}
+    {{ my_js }}
     </script>
 </head>
 
 
 <body>
 
-<h1 style="text-align:center"> Code Comparer Son</h1>
-<h4 style='text-align:center'> wlecome coding blah blah we here compare code</h4>
-<h2 style="text-align:center">Choose the code you would like to compare syntax</h2>
-<input type='checkbox' id='java' class=language-box value='show'>Java
-<input type='checkbox' id='javascript' class=language-box value='show'>Javascript
-<input type='checkbox' id='python' class=language-box value='show'>Python
+    <h1 style="text-align:center"> Code Comparer Son</h1>
+    <h4 style='text-align:center'> wlecome coding blah blah we here compare code</h4>
+    <h2 style="text-align:center">Choose the code you would like to compare syntax</h2>
+    <input type='checkbox' id='java' class=language-box value='show'>Java
+    <input type='checkbox' id='javascript' class=language-box value='show'>Javascript
+    <input type='checkbox' id='python' class=language-box value='show'>Python
 
-<div class="flex-container">
-  <div class="j-col" style='text-align:center' id="test">Java</div>
-  <div class="js-col" style='text-align:center'>Javascript</div>
-  <div class="p-col" style='text-align:center'>Python</div>
-</div>
+    <div class="flex-container">
+        <div class="j-col" style='text-align:center' id="test">Java</div>
+        <div class="js-col" style='text-align:center'>Javascript</div>
+        <div class="p-col" style='text-align:center'>Python</div>
+    </div>
 
-<div class="flex-container">
-  <div class="j-col" >
-    <br>
-    box 1
-    <div id="panel">aint no example</div>
-  </div>
-  <div class="js-col">
-    <br>
-    box 2
-</div>
-  <div class="p-col">
-      <br>
-      box 3
-  </div>
-</div>
+    <div class="flex-container">
+        <div class="j-col" >
+            <br>
+            box 1
+            <div id="panel">aint no example</div>
+        </div>
+        <div class="js-col">
+            <br>
+            box 2
+        </div>
+        <div class="p-col">
+            <br>
+            box 3
+        </div>
+    </div>
 
-<div class="flex-container" id="testappend">
-  <div class="j-col">
-    <br>
-    box 4
-  </div>
-<div class="js-col">
-  <br>
-  box 5
-</div>
+        {% for mini_list in java_items %}
+        <div class="flex-container">
+            <div class="j-col" >
+                <br>
+                {{ mini_list[0]}}
+                <div id="panel">aint no example</div>
+            </div>
+            <div class="js-col">
+                <br>
+                {{ mini_list[1]}}
+            </div>
+            <div class="p-col">
+                <br>
+                {{ mini_list[2]}}
+            </div>
+        </div>
+        {% endfor %}
 
-{% for mini_list in java_items %}
-<div class="flex-container">
-  <div class="j-col" >
-    <br>
-    {{ mini_list[0]}}
-    <div id="panel">aint no example</div>
-  </div>
-  <div class="js-col">
-    <br>
-    {{ mini_list[1]}}
-</div>
-  <div class="p-col">
-      <br>
-    {{ mini_list[2]}}
-  </div>
-</div>
-{% endfor %}
-
-</body>
+    </body>
 
 
 
 
 
-</html>
+    </html>

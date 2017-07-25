@@ -19,6 +19,7 @@ import os
 import webapp2
 import sys
 import json
+from google.appengine.ext import ndb
 
 sys.path.append('source/')
 #Import source code
@@ -39,6 +40,7 @@ class MainHandler(webapp2.RequestHandler):
             mini_list = []
             for j in range(i,i+3):
                 mini_list.append(java_data[j].syntax)
+            print(mini_list)
             java_list.append(mini_list)
 
 
@@ -58,7 +60,9 @@ class MainHandler(webapp2.RequestHandler):
 #Only to construct entities in datastore
 class AdminHandler(webapp2.RequestHandler):
     def get(self):
+        ndb.delete_multi([m.key for m in TableItem.query()])
         tableitem.constructAll()
+        self.response.out.write('Success')
 
 
 

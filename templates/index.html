@@ -28,23 +28,20 @@
 
     <div class="flex-container">
         <div class="j-col" >
-            <br>
             box 1
             <div id="panel">aint no example</div>
         </div>
         <div class="js-col">
-            <br>
             box 2
         </div>
         <div class="p-col">
-            <br>
             box 3
         </div>
     </div>
 
-        {% for mini_list in java_items %}
+        <!--{% for mini_list in java_items %}
         <div class="flex-container">
-            <div class="j-col" >
+            <div class="j-col">
                 {{ mini_list[0] }}
             </div>
             <div class="js-col">
@@ -54,6 +51,21 @@
                 {{ mini_list[2] }}
             </div>
         </div>
+        {% endfor %}-->
+
+        {% for i in range(0, 28) %}
+        <div class="flex-container">
+            <div class="j-col">
+                {{ java_items[i] }}
+            </div>
+            <div class="js-col">
+                {{ js_items[i] }}
+            </div>
+            <div class="p-col">
+                {{ python_items[i] }}
+            </div>
+        </div>
+
         {% endfor %}
 
     </body>

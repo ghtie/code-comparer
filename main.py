@@ -19,6 +19,7 @@ import os
 import webapp2
 import sys
 import json
+import logging
 from google.appengine.ext import ndb
 
 sys.path.append('source/')
@@ -33,22 +34,32 @@ env = jinja2.Environment(
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         #Querying entities from datastore
-        java_data = TableItem.query(TableItem.language == 'Java').fetch(limit=100)
+        java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.find)#.fetch(limit=100)
         java_list = []
+        js_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.find)#.fetch(limit=100)
+        js_list = []
+        python_data = TableItem.query(TableItem.language == 'Python').order(TableItem.find)#.fetch(limit=100)
+        python_list = []
 
-        for i in range(0, len(java_data)-3, 3):
-            mini_list = []
-            for j in range(i,i+3):
-                mini_list.append(java_data[j].syntax)
-            print(mini_list)
-            java_list.append(mini_list)
+        #for i in range(0, len(java_data)-3, 3):
+        #    mini_list = []
+        #    for j in range(i,i+3):
+        #        mini_list.append(java_data[j].syntax)
+        #    java_list.append(mini_list)
+
+        queryToList(java_data, java_list)
+        queryToList(js_data, js_list)
+        queryToList(python_data, python_list)
+
 
 
 
 
 
         template_vars = {
-            'java_items': java_list         #{{ java_items }} in the html
+            'java_items': java_list,         #{{ java_items }} in the html
+            'js_items': js_list,
+            'python_items': python_list
         }
 
 
@@ -70,3 +81,9 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/admin', AdminHandler)
 ], debug=True)
+
+
+
+def queryToList(query_data, query_list):
+    for item in query_data:
+        query_list.append(item.syntax)

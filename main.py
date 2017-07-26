@@ -18,10 +18,14 @@ import jinja2
 import os
 import webapp2
 import sys
+import json
+import logging
+from google.appengine.ext import ndb
 
 sys.path.append('source/')
-#import source code
+#Import source code
 import tableitem
+from tableitem import TableItem
 
 
 env = jinja2.Environment(
@@ -29,13 +33,58 @@ env = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('templates/index.html')
-        self.response.out.write(template.render())
+        #Querying entities from datastore into language-separated lists
+        desc_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
+        desc_list = []
+        java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
+        java_list = []
+        javascript_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.find)
+        javascript_list = []
+        python_data = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.find)
+        python_list = []
 
-        #Construct All
+
+        queryToListDesc(desc_data, desc_list)
+        queryToList(java_data, java_list)
+        queryToList(javascript_data, javascript_list)
+        queryToList(python_data, python_list)
+
+
+
+
+        template_vars = {
+            'desc_items': desc_list,
+            'java_items': java_list,         #{{ java_items }} in the html
+            'javascript_items': javascript_list,
+            'python_items': python_list
+        }
+
+        template = env.get_template('templates/index.html')
+        self.response.out.write(template.render(template_vars))
+
+
+#Only to construct entities in datastore
+class AdminHandler(webapp2.RequestHandler):
+    def get(self):
+        ndb.delete_multi([m.key for m in TableItem.query()])
         tableitem.constructAll()
+        self.response.out.write('Success')
+
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/admin', AdminHandler)
 ], debug=True)
+
+
+
+
+#Helper Functions
+def queryToList(query_data, query_list):
+    for item in query_data:
+        query_list.append(item.syntax)
+
+def queryToListDesc(query_data, query_list):
+    for item in query_data:
+        query_list.append(item.description)

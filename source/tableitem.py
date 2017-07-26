@@ -121,8 +121,8 @@ def constructAll():
     construct('not', 'Python', 'Logical Operators', 'p_not', 'Not').put()
 
     #For Loop
-    construct('for (int i=incl; i<excl; i+increment) { ... }', 'Java', 'Loops', 'j_forloop', 'For Loop').put()
-    construct('for (int i=incl; i<excl; i+increment)', 'Javascript', 'Loops','js_forloop', 'For Loop').put()
+    construct('for (int i = incl; i < excl; i+increment) { ... }', 'Java', 'Loops', 'j_forloop', 'For Loop').put()
+    construct('for (int i = incl; i < excl; i+increment)', 'Javascript', 'Loops','js_forloop', 'For Loop').put()
     construct('for i in range(incl, excl):\n\t...', 'Python', 'Loops','p_forloop', 'For Loop').put()
     #Enhanced For Loop
     construct('for (type element : myArray) { ... }', 'Java', 'Loops', 'j_enhancedforloop', 'Enhanced For Loop').put()

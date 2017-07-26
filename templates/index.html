@@ -10,70 +10,57 @@
 
 <body>
 
-<h1 style="text-align:center"> Parallel Cryptograph </h1>
-<center><img src="static/code.jpeg" style="width: 100%;height:300px;" ></center>
-<h3 style='text-align:center'> Welcome to coding blah blah we here help see compare code</h3>
-<h5 style="text-align:center">Choose the code you would like to compare syntax</h5>
-<input type='checkbox' id='java' class=language-box value='show'>Java
-<input type='checkbox' id='javascript' class=language-box value='show'>Javascript
-<input type='checkbox' id='python' class=language-box value='show'>Python
+    <h1 style="text-align:center"> Code Comparer Son</h1>
+    <h4 style='text-align:center'> wlecome coding blah blah we here compare code</h4>
+    <h2 style="text-align:center">Choose the code you would like to compare syntax</h2>
+    <input type='checkbox' id='java' class=language-box value='show'>Java                           <!--Check boxes for languages-->
+    <input type='checkbox' id='javascript' class=language-box value='show'>Javascript
+    <input type='checkbox' id='python' class=language-box value='show'>Python
 
-<div class="flex-container">
-  <div class="j-col" style='text-align:center'><a href="url">Java</a></div>
-  <div class="js-col" style='text-align:center'><a href="url">Javascript</a></div>
-  <div class="p-col" style='text-align:center'><a href="url">Python</a></div>
-</div>
+    <div class="flex-container">
+        <div class="desc-col" style='text-align:center' id='desc-title'>Category</div>               <!--Column title cells-->
+        <div class="j-col" style='text-align:center' id='java-title'>Java</div>
+        <div class="js-col" style='text-align:center' id='javascript-title'>Javascript</div>
+        <div class="p-col" style='text-align:center' id='python-title'>Python</div>
+    </div>
 
-<div class="flex-container">
-  <div class="j-col" >
-    <br>
-    box 1
-  </div>
-  <div class="js-col" id="testappend">
-    <br>
-    box 2
-    <div id="panel">var step;
-      <br>
-for (step = 0; step < 5; step++) {
-  <br>
-  // Runs 5 times, with values of step 0 through 4.
-<br>
-  console.log('Walking east one step');
-}</div>
-</div>
-  <div class="p-col">
-      <br>
-      box 3
-  </div>
-</div>
+    <!--<div class="flex-container">
+        <div class="j-col" >
+            box 1
+            <div id="panel">aint no example</div>
+        </div>
+        <div class="js-col">
+            box 2
+        </div>
+        <div class="p-col">
+            box 3
+        </div>
+    </div>-->
 
-<div class="flex-container">
-  <div class="j-col">
-    <br>
-    box 4
-  </div>
-<div class="js-col" id='testappend1'>
-  <br>
-  box 5
-  <div id="panel2">var step;
-    <br>
-for (step = 0; step < 5; step++) {
-<br>
-// Runs 5 times, with values of step 0 through 4.
-<br>
-console.log('Walking east one step');
-}</div>
-</div>
+        {% for i in range(0, 28) %}
+        <div class="flex-container">
+            <div class="desc-col">
+                {{ desc_items[i] }}
 
-<div class="p-col">
-  <br>
-  box 6
-</div>
-</div>
-</body>
+            </div>
+            <div class="j-col">
+                {{ java_items[i] }}
+                    <div id="panel">Hello world!</div>
+            </div>
+            <div class="js-col">
+                {{ javascript_items[i] }}
+            </div>
+            <div class="p-col">
+                {{ python_items[i] }}
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </body>
 
 
 
 
 
-</html>
+    </html>

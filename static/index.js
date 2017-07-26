@@ -1,58 +1,63 @@
-$(document).ready(setup);
+$(document).ready(syntaxChoice);
 
-//Setup Functions
-function syntaxChoice() {
-  $("#java").click(displayJava);
-  $("#javascript").click(displayJavascript);
-  $("#python").click(displayPython);
-}
-
+//checks all boxes
 function loadChecked() {
     $(".language-box").prop("checked", true);
 }
+//Setup Functions
+function syntaxChoice() {
+    $(".flex-container").hover(addHighlight)
+    $(".flex-container").mouseleave(removeHighlight)
+    $("#java").click(displayJava);
+    $("#javascript").click(displayJavascript);
+    $("#python").click(displayPython);
+}
+function addHighlight(){
+  $(this).addClass("highlighted");
+
+}
+
+function removeHighlight(){
+  $(this).removeClass("highlighted");
+}
 
 $(document).ready(function(){
-    $("#testappend1").click(function(){
-        $("#panel2").slideToggle();
+    $(".j-col").click(function(){
+        $("#panel").slideToggle();
     });
-  });
-  $(document).ready(function(){
-      $("#testappend").click(function(){
-          $("#panel").slideToggle();
-      });
+});
+$(document).ready(function(){
+    $(".js-col").click(function(){
+        $("#panel").slideToggle();
     });
-  //function handleExample() {
-    //$("#testappend").click();
-    //$("#panel").slideToggle("slow")
-  //}
-//function slidePanel() {
-  //  $("#panel").slideToggle("slow")
-    //$("#panel2").slideToggle("slow")
-
-//}
-
-
+});
+  /*function handleExample() {
+    $("#testappend").click();
+    $("#panel").slideToggle("slow")
+  }
+function slidePanel() {
+    $("#panel").slideToggle("slow")
+    $("#panel2").slideToggle("slow")
+}*/
 
 //Toggle Functions
 function displayJava() {
-  $('.j-col').toggle(1000);
+    $('.j-col').toggle(270);
 }
 
 function displayJavascript() {
-  $('.js-col').toggle(1000);
+    $('.js-col').toggle(270);
 }
 
 function displayPython() {
-  $('.p-col').toggle(1000);
+    $('.p-col').toggle(270);
 }
-
-
 
 
 function setup() {
     syntaxChoice();
     loadChecked();
-    handleExample();
+  //  handleExample();
 }
 
 window.onload=loadChecked;

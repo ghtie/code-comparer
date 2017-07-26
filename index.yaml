@@ -13,4 +13,10 @@ indexes:
 - kind: TableItem
   properties:
   - name: language
+  - name: category
+  - name: find
+
+- kind: TableItem
+  properties:
+  - name: language
   - name: find

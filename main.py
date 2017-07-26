@@ -33,36 +33,31 @@ env = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        #Querying entities from datastore
-        java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.find)#.fetch(limit=100)
+        #Querying entities from datastore into language-separated lists
+        desc_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
+        desc_list = []
+        java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
         java_list = []
-        js_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.find)#.fetch(limit=100)
-        js_list = []
-        python_data = TableItem.query(TableItem.language == 'Python').order(TableItem.find)#.fetch(limit=100)
+        javascript_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.find)
+        javascript_list = []
+        python_data = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.find)
         python_list = []
 
-        #for i in range(0, len(java_data)-3, 3):
-        #    mini_list = []
-        #    for j in range(i,i+3):
-        #        mini_list.append(java_data[j].syntax)
-        #    java_list.append(mini_list)
 
+        queryToListDesc(desc_data, desc_list)
         queryToList(java_data, java_list)
-        queryToList(js_data, js_list)
+        queryToList(javascript_data, javascript_list)
         queryToList(python_data, python_list)
 
 
 
 
-
-
         template_vars = {
+            'desc_items': desc_list,
             'java_items': java_list,         #{{ java_items }} in the html
-            'js_items': js_list,
+            'javascript_items': javascript_list,
             'python_items': python_list
         }
-
-
 
         template = env.get_template('templates/index.html')
         self.response.out.write(template.render(template_vars))
@@ -84,6 +79,12 @@ app = webapp2.WSGIApplication([
 
 
 
+
+#Helper Functions
 def queryToList(query_data, query_list):
     for item in query_data:
         query_list.append(item.syntax)
+
+def queryToListDesc(query_data, query_list):
+    for item in query_data:
+        query_list.append(item.description)

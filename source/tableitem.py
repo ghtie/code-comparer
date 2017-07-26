@@ -51,7 +51,7 @@ def constructAll():
     #Constructor Definition
     construct('public MyClass(type param1, type param2...) { ... }', 'Java', 'Object-Oriented Programming', 'j_defconstruct', 'Constructor Definition').put()
     construct('same as class definition (see js_defclass)', 'Javascript', 'Object-Oriented Programming', 'js_defconstruct', 'Constructor Definition').put()
-    construct('\t__init__(self):\n\t ... ', 'Python', 'Object-Oriented Programming', 'p_defconstruct', 'Constructor Definition').put()
+    construct('__init__(self):\n\t ... ', 'Python', 'Object-Oriented Programming', 'p_defconstruct', 'Constructor Definition').put()
     #Constructor Call
     construct('new MyClass()', 'Java', 'Object-Oriented Programming', 'j_callconstruct', 'Constructor Call').put()
     construct('new MyClass()', 'Javascript', 'Object-Oriented Programming', 'js_callconstruct', 'Constructor Call').put()
@@ -122,7 +122,7 @@ def constructAll():
 
     #For Loop
     construct('for (int i = incl; i < excl; i+increment) { ... }', 'Java', 'Loops', 'j_forloop', 'For Loop').put()
-    construct('for (int i = incl; i < excl; i+increment)', 'Javascript', 'Loops','js_forloop', 'For Loop').put()
+    construct('for (i = incl; i < excl; i+increment)', 'Javascript', 'Loops','js_forloop', 'For Loop').put()
     construct('for i in range(incl, excl):\n\t...', 'Python', 'Loops','p_forloop', 'For Loop').put()
     #Enhanced For Loop
     construct('for (type element : myArray) { ... }', 'Java', 'Loops', 'j_enhancedforloop', 'Enhanced For Loop').put()

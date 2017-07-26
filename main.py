@@ -33,9 +33,20 @@ env = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        #Querying entities from datastore into language-separated lists
+        #Querying descriptions of entities from datastore
         desc_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
         desc_list = []
+
+        #Querying finds of entities from datastore into language-separated lists
+        #used to make html id's
+        find_data_j = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
+        find_list_j = []
+        find_data_js = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.find)
+        find_list_js = []
+        find_data_p = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.find)
+        find_list_p = []
+
+        #Querying entities from datastore into language-separated lists
         java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
         java_list = []
         javascript_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.find)
@@ -45,6 +56,11 @@ class MainHandler(webapp2.RequestHandler):
 
 
         queryToListDesc(desc_data, desc_list)
+
+        queryToListFind(find_data_j, find_list_j)
+        queryToListFind(find_data_js, find_list_js)
+        queryToListFind(find_data_p, find_list_p)
+
         queryToList(java_data, java_list)
         queryToList(javascript_data, javascript_list)
         queryToList(python_data, python_list)
@@ -54,7 +70,10 @@ class MainHandler(webapp2.RequestHandler):
 
         template_vars = {
             'desc_items': desc_list,
-            'java_items': java_list,         #{{ java_items }} in the html
+            'find_items_j': find_list_j,
+            'find_items_js': find_list_js,
+            'find_items_p': find_list_p,
+            'java_items': java_list,                     #{{ java_items }} in the html
             'javascript_items': javascript_list,
             'python_items': python_list
         }
@@ -88,3 +107,7 @@ def queryToList(query_data, query_list):
 def queryToListDesc(query_data, query_list):
     for item in query_data:
         query_list.append(item.description)
+
+def queryToListFind(query_data, query_list):
+    for item in query_data:
+        query_list.append(item.find)

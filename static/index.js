@@ -1,23 +1,33 @@
-$(document).ready(setup);
+$(document).ready(syntaxChoice);
 
+//checks all boxes
+function loadChecked() {
+    $(".language-box").prop("checked", true);
+}
 //Setup Functions
 function syntaxChoice() {
+    $(".flex-container").hover(addHighlight)
+    $(".flex-container").mouseleave(removeHighlight)
     $("#java").click(displayJava);
     $("#javascript").click(displayJavascript);
     $("#python").click(displayPython);
 }
+function addHighlight(){
+  $(this).addClass("highlighted");
 
-function loadChecked() {
-    $(".language-box").prop("checked", true);
+}
+
+function removeHighlight(){
+  $(this).removeClass("highlighted");
 }
 
 $(document).ready(function(){
-    $("#testappend1").click(function(){
-        $("#panel2").slideToggle();
+    $(".j-col").click(function(){
+        $("#panel").slideToggle();
     });
 });
 $(document).ready(function(){
-    $("#testappend").click(function(){
+    $(".js-col").click(function(){
         $("#panel").slideToggle();
     });
 });
@@ -28,77 +38,26 @@ $(document).ready(function(){
 function slidePanel() {
     $("#panel").slideToggle("slow")
     $("#panel2").slideToggle("slow")
-
 }*/
 
 //Toggle Functions
 function displayJava() {
-    $('.j-col').toggle(1000);
+    $('.j-col').toggle(270);
 }
 
 function displayJavascript() {
-    $('.js-col').toggle(1000);
+    $('.js-col').toggle(270);
 }
 
 function displayPython() {
-    $('.p-col').toggle(1000);
+    $('.p-col').toggle(270);
 }
-
-
 
 
 function setup() {
     syntaxChoice();
     loadChecked();
-    handleExample();
+  //  handleExample();
 }
 
 window.onload=loadChecked;
-
-
-
-
-/*$(document).ready(setup);
-
-
-//Setup Functions
-function syntaxChoice() {
-  $("#java").click(displayJava);
-  $("#javascript").click(displayJavascript);
-  $("#python").click(displayPython);
-}
-
-function loadChecked() {
-    $(".language-box").prop("checked", true);
-}
-
-function handleExample() {
-    $("#test").click(function(){$("#panel").slideToggle("slow");})
-}
-
-function testAppend() {
-    $("#testappend").append('<div class="p-col"><br>box 6 </div>')
-}
-
-
-//Toggle Functions
-function displayJava() {
-  $('.j-col').toggle();
-}
-
-function displayJavascript() {
-  $('.js-col').toggle();
-}
-
-function displayPython() {
-  $('.p-col').toggle();
-}
-
-
-function setup() {
-    syntaxChoice();
-    loadChecked();
-    handleExample();
-}
-
-window.onload=loadChecked;*/

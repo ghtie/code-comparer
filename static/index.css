@@ -2,21 +2,23 @@ body {
   font-family: Helvetica;
   font-weight: lighter;
   font-size: 14px;
-  /*color: #DCD0C0;*/
   color: #373737;
   background-color: #F4F4F4;
 }
 
 h1 {
-  color: #C0B283;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 48px;
+    color: #C0B283;
 }
 
-h2 {
-  color:#373737;
-  font-size: 24px;
+h4 {
+    font-weight: lighter;
+  color: #DCD0C0;
 }
 
-.flex-container {
+.flex-container, .flex-container-title {
     display: -webkit-flex;
     display: flex;
     width: 100%;
@@ -38,6 +40,7 @@ h2 {
 .j-panel, .js-panel, .p-panel {
     padding: 2px;
     display: none;
+    color: #DCD0C0;
 }
 
 #desc-title, #java-title, #javascript-title, #python-title {

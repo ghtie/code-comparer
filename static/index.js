@@ -17,7 +17,7 @@ function handleHighlight() {                            //When mouse hovered ove
     $(".flex-container").mouseleave(removeHighlight)
 }
 
-function handleExample() {                              //"#idPanel"
+function handleExample() {                              //When row clicked, show example panels
     $(".flex-container").click(slidePanel);
 }
 
@@ -26,13 +26,13 @@ function handleExample() {                              //"#idPanel"
 
 //Helper Functions
 function displayJava() {                                //Toggle Functions
-    $('.j-col').toggle(270);
+    $('.j-col').fadeToggle(500);
 }
 function displayJavascript() {
-    $('.js-col').toggle(270);
+    $('.js-col').fadeToggle(500);
 }
 function displayPython() {
-    $('.p-col').toggle(270);
+    $('.p-col').fadeToggle(500);
 }
 
 function addHighlight() {                               //Highlight Functions
@@ -45,6 +45,7 @@ function removeHighlight(){
 function slidePanel() {                                 //Panel Slide Functions
     $(this).find(".j-panel").slideToggle("slow");
     $(this).find(".js-panel").slideToggle("slow");
+    $(this).find(".p-panel").slideToggle("slow");
 }
 
 

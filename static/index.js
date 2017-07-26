@@ -1,63 +1,58 @@
-$(document).ready(syntaxChoice);
+$(document).ready(setup);
 
-//checks all boxes
-function loadChecked() {
+
+//Setup Functions
+function loadChecked() {                               //Loads window with boxes default checked
     $(".language-box").prop("checked", true);
 }
-//Setup Functions
-function syntaxChoice() {
-    $(".flex-container").hover(addHighlight)
-    $(".flex-container").mouseleave(removeHighlight)
+
+function syntaxChoice() {                               //When checkbox selected, show language column
     $("#java").click(displayJava);
     $("#javascript").click(displayJavascript);
     $("#python").click(displayPython);
 }
-function addHighlight(){
-  $(this).addClass("highlighted");
 
+function handleHighlight() {                            //When mouse hovered over row, highlight row
+    $(".flex-container").hover(addHighlight)
+    $(".flex-container").mouseleave(removeHighlight)
 }
 
-function removeHighlight(){
-  $(this).removeClass("highlighted");
+function handleExample() {                              //"#idPanel"
+    $(".flex-container").click(slidePanel);
 }
 
-$(document).ready(function(){
-    $(".j-col").click(function(){
-        $("#panel").slideToggle();
-    });
-});
-$(document).ready(function(){
-    $(".js-col").click(function(){
-        $("#panel").slideToggle();
-    });
-});
-  /*function handleExample() {
-    $("#testappend").click();
-    $("#panel").slideToggle("slow")
-  }
-function slidePanel() {
-    $("#panel").slideToggle("slow")
-    $("#panel2").slideToggle("slow")
-}*/
 
-//Toggle Functions
-function displayJava() {
+
+
+//Helper Functions
+function displayJava() {                                //Toggle Functions
     $('.j-col').toggle(270);
 }
-
 function displayJavascript() {
     $('.js-col').toggle(270);
 }
-
 function displayPython() {
     $('.p-col').toggle(270);
+}
+
+function addHighlight() {                               //Highlight Functions
+    $(this).addClass("highlighted");
+}
+function removeHighlight(){
+    $(this).removeClass("highlighted");
+}
+
+function slidePanel() {                                 //Panel Slide Functions
+    $(this).find(".j-panel").slideToggle("slow");
+    $(this).find(".js-panel").slideToggle("slow");
 }
 
 
 function setup() {
     syntaxChoice();
     loadChecked();
-  //  handleExample();
-}
+    handleHighlight();
+    handleExample()
+    }
 
-window.onload=loadChecked;
+//window.onload=loadChecked;

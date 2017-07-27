@@ -42,7 +42,7 @@ class MainHandler(webapp2.RequestHandler):
         python_data = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.description)
 
         desc_list = []
-        
+
         java_list = []
         javascript_list = []
         python_list = []
@@ -125,6 +125,7 @@ def constructLanguageInfoHTML():
         html_string += "<li>" + languageInfo_post.listString(i) + "</li>"
     html_string += "</ol>"
     return html_string
+
 
 #Helper Functions
 def queryToList(query_data, query_list):

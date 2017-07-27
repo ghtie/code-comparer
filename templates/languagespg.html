@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/index.css"></link>                                          <!-- Links css file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>        <!-- Allows JQuery -->
+    <script type="text/javascript" src="static/index.js"></script>                                  <!-- Links javascript file -->
+    <title>Datway</title>
+</head>
+
+<header>
+    <div id="main">
+        <span id = "sideBar" onclick="openNav()">&#9776</span>
+    </div>
+    <div id="navBar" class="navBar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="blog-list-wrapper">{{languagelist}}</div>
+        <a href="\">Home</a>
+        <a href="/post?page_id=0">Java</a>
+        <a href="/post?page_id=1">JavaScript</a>
+        <a href="/post?page_id=2">Python</a>
+    </div>
+</header>
+
+<p>{{ content }}</p>
+
+
+</body>
+</html>

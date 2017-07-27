@@ -39,6 +39,10 @@ def constructAll():
     construct('{ ... }','Java', 'Basics', 'j_group', 'Grouping Expressions', '').put()
     construct('{ ... }','Javascript', 'Basics','js_group', 'Grouping Expressions', '').put()
     construct('(indentation)','Python', 'Basics','p_group', 'Grouping Expressions', '').put()
+    #Variable Definition
+    construct('(type) varName', 'Java', 'Basics', 'j_defvar', 'Variable Definition', 'int i = 0;').put()
+    construct('var varName', 'Javascript', 'Basics', 'js_defvar', 'Variable Definition', 'var i = 0;').put()
+    construct('varName', 'Python', 'Basics', 'p_defvar', 'Variable Definition', 'i = 0').put()
 
     #Function Definition
     construct('public returnType myFunc(type param1, type param2, ...) { ... }', 'Java', 'Functions', 'j_deffunc', 'Function Definition', linkHelper('http://www.learnjavaonline.org/en/Functions')).put()

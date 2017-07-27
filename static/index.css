@@ -1,6 +1,6 @@
 /*Nav Bar styles*/
 #sideBar{
-  font-size: 36px;
+  font-size: 32px;
 }
 
 #main {
@@ -15,6 +15,7 @@
   font-size: 48px;
   font-style: italic;
   text-align: center;
+  font-weight: lighter;
 }
 
 #jp1 {
@@ -22,17 +23,14 @@
   color:#373737;
   text-align: center;
   text-indent: 50px;
-  font-weight: bold;
+  font-weight: lighter;
+  padding-left: 45px;
+  padding-right: 45px;
+  font-size: 16px;
 }
 
 #test2 {
   text-indent: 50px;
-}
-
-#jp2 {
-  font-family: Helvetica;
-  color:black;
-  text-align: left;
 }
 
 header {
@@ -135,13 +133,15 @@ a {
     color: #373737;
 }
 
-#panel {
+.j-panel, .js-panel, .p-panel {
     padding: 2px;
     display: none;
+    font-family: Helvetica;
+    color: #DCD0C0;
 }
 
 #table{
-  padding: 56px;
+  padding: 10px;
 }
 
 .highlighted{

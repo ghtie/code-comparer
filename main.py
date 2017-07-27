@@ -26,20 +26,25 @@ sys.path.append('source/')
 #Import source code
 import tableitem
 from tableitem import TableItem
+#import tab page displays
+from language_tabs import DisplayMoreInfo
+from language_tabs import language_list
 
 
-env = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        desc_list = []
         #Querying entities from datastore into language-separated lists
         java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.description)
-        java_list = []
         javascript_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.description)
-        javascript_list = []
         python_data = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.description)
+
+        desc_list = []
+        
+        java_list = []
+        javascript_list = []
         python_list = []
 
         java_ex_list = []
@@ -57,9 +62,6 @@ class MainHandler(webapp2.RequestHandler):
         queryToListExample(javascript_data, javascript_ex_list)
         queryToListExample(python_data, python_ex_list)
 
-
-
-
         template_vars = {
             'desc_items': desc_list,
 
@@ -76,6 +78,26 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(template.render(template_vars))
 
 
+
+#set up environment for Jinja
+#this sets jinja's relative directory to match the directory name(dirname) of
+#the current __file__, in this case, main.py
+
+class SecondHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/index.html')
+        list_variables = {"languagelist": constructLanguageInfoHTML()}
+        self.response.out.write(template.render(list_variables))
+
+class PostHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/languagespg.html')
+        page_id = int(self.request.get('page_id'))
+        languageInfo_post = language_list[page_id]
+        tab_variables = {"title": languageInfo_post.title,
+                        "content": languageInfo_post.content}
+        self.response.out.write(template.render(tab_variables))
+
 #Only to construct entities in datastore
 class AdminHandler(webapp2.RequestHandler):
     def get(self):
@@ -87,11 +109,22 @@ class AdminHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/admin', AdminHandler)
+    ('/test', SecondHandler),
+    ('/admin', AdminHandler),
+    ('/post', PostHandler)
 ], debug=True)
 
 
 
+
+
+def constructLanguageInfoHTML():
+    html_string = "<ol>\n"
+    for i in range(0, len(language_list)):
+        languageInfo_post = language_list[i]
+        html_string += "<li>" + languageInfo_post.listString(i) + "</li>"
+    html_string += "</ol>"
+    return html_string
 
 #Helper Functions
 def queryToList(query_data, query_list):

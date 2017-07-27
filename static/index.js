@@ -1,11 +1,17 @@
 $(document).ready(setup);
 
-
 //Setup Functions
 function loadChecked() {                               //Loads window with boxes default checked
     $(".language-box").prop("checked", true);
 }
+//navigation bar
+function openNav() {
+    document.getElementById("navBar").style.width = "250px";
+}
 
+function closeNav() {
+    document.getElementById("navBar").style.width = "0";
+}
 function syntaxChoice() {                               //When checkbox selected, show language column
     $("#java").click(displayJava);
     $("#javascript").click(displayJavascript);
@@ -17,22 +23,20 @@ function handleHighlight() {                            //When mouse hovered ove
     $(".flex-container").mouseleave(removeHighlight)
 }
 
-function handleExample() {                              //When row clicked, show example panels
+function handleExample() {                              //"#idPanel"
     $(".flex-container").click(slidePanel);
 }
 
 
-
-
 //Helper Functions
 function displayJava() {                                //Toggle Functions
-    $('.j-col').fadeToggle(500);
+    $('.j-col').fadeToggle(700);
 }
 function displayJavascript() {
-    $('.js-col').fadeToggle(500);
+    $('.js-col').fadeToggle(700);
 }
 function displayPython() {
-    $('.p-col').fadeToggle(500);
+    $('.p-col').fadeToggle(700);
 }
 
 function addHighlight() {                               //Highlight Functions
@@ -53,7 +57,10 @@ function setup() {
     syntaxChoice();
     loadChecked();
     handleHighlight();
-    handleExample()
+    $(".j-panel").hide();
+    $(".js-panel").hide();
+    $(".p-panel").hide();
+    handleExample();
+    openNav();
+    closeNav();
     }
-
-//window.onload=loadChecked;

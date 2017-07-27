@@ -1,3 +1,85 @@
+/*Nav Bar styles*/
+#sideBar{
+  font-size: 36px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding-left: 20px;
+    padding-bottom: 0;
+    color: #C0B283;
+}
+
+#jhead {
+  color: #C0B283;
+  font-size: 48px;
+  font-style: italic;
+  text-align: center;
+}
+
+#jp1 {
+  font-family: Helvetica;
+  color:#373737;
+  text-align: center;
+  text-indent: 50px;
+  font-weight: bold;
+}
+
+#test2 {
+  text-indent: 50px;
+}
+
+#jp2 {
+  font-family: Helvetica;
+  color:black;
+  text-align: left;
+}
+
+header {
+  float: left;
+  width: 100%;
+  color: white;
+  vertical-align: middle;
+}
+
+.navBar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #383838;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.navBar a {
+    padding: 10px 0px 0px 32px;
+    padding-top: 30px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.navBar a:hover {
+    color: white;
+}
+
+.navBar .closebtn {
+    position: absolute;
+    padding:0;
+    padding-top: 5px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+
+
 body {
   font-family: Helvetica;
   font-weight: lighter;
@@ -6,11 +88,13 @@ body {
   background-color: #F4F4F4;
 }
 
-h1 {
+h2 {
     font-style: italic;
     font-weight: lighter;
     font-size: 48px;
     color: #C0B283;
+    text-align: center;
+    margin: 0;
 }
 
 h4 {
@@ -30,7 +114,7 @@ a {
     font-family: 'Courier New';
 }
 
-.desc-col, .j-col, .js-col, .p-col {
+.j-col, .js-col, .p-col {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -38,13 +122,12 @@ a {
 }
 
 .desc-col {
+    width: 800px;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
     font-family: Helvetica;
-}
-
-.j-panel, .js-panel, .p-panel {
-    padding: 2px;
-    display: none;
-    color: #DCD0C0;
+    font-weight: lighter;
 }
 
 #desc-title, #java-title, #javascript-title, #python-title {
@@ -52,8 +135,13 @@ a {
     color: #373737;
 }
 
+#panel {
+    padding: 2px;
+    display: none;
+}
+
 #table{
-  padding: 50px;
+  padding: 56px;
 }
 
 .highlighted{

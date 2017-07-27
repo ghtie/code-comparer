@@ -9,7 +9,7 @@
 
 
 <body>
-
+    <title>Datway</title>
     <h1 style="text-align:center">Code Comparer Son</h1>
     <h4 style='text-align:center'>wlecome coding blah blah we here compare code</h4>
     <input type='checkbox' id='java' class=language-box value='show'>Java                           <!--Check boxes for languages-->
@@ -30,15 +30,15 @@
             </div>
             <div class="j-col">
                 {{ java_items[i] }}
-                <div class="j-panel" id= {{ find_items_j[i] }} >aint no example j</div>
+                <div class="j-panel" > {{ j_examples[i] }} </div>
             </div>
             <div class="js-col">
                 {{ javascript_items[i] }}
-                <div class="js-panel" id= {{ find_items_js[i] }}>aint no example js</div>
+                <div class="js-panel">{{ js_examples[i] }}</div>
             </div>
             <div class="p-col">
                 {{ python_items[i] }}
-                <div class="p-panel" id= {{ find_items_p[i] }}>aint no example p</div>
+                <div class="p-panel">{{ p_examples[i] }}</div>
             </div>
         </div>
         {% endfor %}

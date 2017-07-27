@@ -33,49 +33,43 @@ env = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        #Querying descriptions of entities from datastore
-        desc_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
         desc_list = []
-
-        #Querying finds of entities from datastore into language-separated lists
-        #used to make html id's
-        find_data_j = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
-        find_list_j = []
-        find_data_js = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.find)
-        find_list_js = []
-        find_data_p = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.find)
-        find_list_p = []
-
         #Querying entities from datastore into language-separated lists
-        java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
+        java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.description)
         java_list = []
-        javascript_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.find)
+        javascript_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.description)
         javascript_list = []
-        python_data = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.find)
+        python_data = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.description)
         python_list = []
 
+        java_ex_list = []
+        javascript_ex_list = []
+        python_ex_list = []
 
-        queryToListDesc(desc_data, desc_list)
 
-        queryToListFind(find_data_j, find_list_j)
-        queryToListFind(find_data_js, find_list_js)
-        queryToListFind(find_data_p, find_list_p)
+        queryToListDesc(python_data, desc_list)
 
         queryToList(java_data, java_list)
         queryToList(javascript_data, javascript_list)
         queryToList(python_data, python_list)
+
+        queryToListExample(java_data, java_ex_list)
+        queryToListExample(javascript_data, javascript_ex_list)
+        queryToListExample(python_data, python_ex_list)
 
 
 
 
         template_vars = {
             'desc_items': desc_list,
-            'find_items_j': find_list_j,
-            'find_items_js': find_list_js,
-            'find_items_p': find_list_p,
+
             'java_items': java_list,                     #{{ java_items }} in the html
             'javascript_items': javascript_list,
-            'python_items': python_list
+            'python_items': python_list,
+
+            'j_examples': java_ex_list,
+            'js_examples': javascript_ex_list,
+            'p_examples': python_ex_list
         }
 
         template = env.get_template('templates/index.html')
@@ -108,6 +102,6 @@ def queryToListDesc(query_data, query_list):
     for item in query_data:
         query_list.append(item.description)
 
-def queryToListFind(query_data, query_list):
+def queryToListExample(query_data, query_list):
     for item in query_data:
-        query_list.append(item.find)
+        query_list.append(item.example)

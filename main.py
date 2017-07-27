@@ -26,16 +26,30 @@ sys.path.append('source/')
 #Import source code
 import tableitem
 from tableitem import TableItem
+#import tab page displays
+from language_tabs import DisplayMoreInfo
+from language_tabs import language_list
 
 
-env = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        #Querying entities from datastore into language-separated lists
+        #Querying descriptions of entities from datastore
         desc_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
         desc_list = []
+
+        #Querying finds of entities from datastore into language-separated lists
+        #used to make html id's
+        find_data_j = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
+        find_list_j = []
+        find_data_js = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.find)
+        find_list_js = []
+        find_data_p = TableItem.query(TableItem.language == 'Python').order(TableItem.category, TableItem.find)
+        find_list_p = []
+
+        #Querying entities from datastore into language-separated lists
         java_data = TableItem.query(TableItem.language == 'Java').order(TableItem.category, TableItem.find)
         java_list = []
         javascript_data = TableItem.query(TableItem.language == 'Javascript').order(TableItem.category, TableItem.find)
@@ -45,16 +59,21 @@ class MainHandler(webapp2.RequestHandler):
 
 
         queryToListDesc(desc_data, desc_list)
+
+        queryToListFind(find_data_j, find_list_j)
+        queryToListFind(find_data_js, find_list_js)
+        queryToListFind(find_data_p, find_list_p)
+
         queryToList(java_data, java_list)
         queryToList(javascript_data, javascript_list)
         queryToList(python_data, python_list)
 
-
-
-
         template_vars = {
             'desc_items': desc_list,
-            'java_items': java_list,         #{{ java_items }} in the html
+            'find_items_j': find_list_j,
+            'find_items_js': find_list_js,
+            'find_items_p': find_list_p,
+            'java_items': java_list,                     #{{ java_items }} in the html
             'javascript_items': javascript_list,
             'python_items': python_list
         }
@@ -62,6 +81,36 @@ class MainHandler(webapp2.RequestHandler):
         template = env.get_template('templates/index.html')
         self.response.out.write(template.render(template_vars))
 
+
+
+#set up environment for Jinja
+#this sets jinja's relative directory to match the directory name(dirname) of
+#the current __file__, in this case, main.py
+
+def constructLanguageInfoHTML():
+    html_string = "<ol>\n"
+    for i in range(0, len(language_list)):
+        languageInfo_post = language_list[i]
+        html_string += "<li>" + languageInfo_post.listString(i) + "</li>"
+    html_string += "</ol>"
+    return html_string
+
+class SecondHandler(webapp2.RequestHandler):
+    def get(self):
+        #this is where you reference your HTML file
+        template = jinja_environment.get_template('templates/index.html')
+        list_variables = {"languagelist": constructLanguageInfoHTML()}
+        self.response.out.write(template.render(list_variables))
+
+class PostHandler(webapp2.RequestHandler):
+    def get(self):
+        # This creates and serves the blog post page
+        template = jinja_environment.get_template('templates/languagespg.html')
+        page_id = int(self.request.get('page_id'))
+        languageInfo_post = language_list[page_id]
+        tab_variables = {"title": languageInfo_post.title,
+                        "content": languageInfo_post.content}
+        self.response.out.write(template.render(tab_variables))
 
 #Only to construct entities in datastore
 class AdminHandler(webapp2.RequestHandler):
@@ -74,7 +123,9 @@ class AdminHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/admin', AdminHandler)
+    ('/test', SecondHandler),
+    ('/admin', AdminHandler),
+    ('/post', PostHandler)
 ], debug=True)
 
 
@@ -88,3 +139,7 @@ def queryToList(query_data, query_list):
 def queryToListDesc(query_data, query_list):
     for item in query_data:
         query_list.append(item.description)
+
+def queryToListFind(query_data, query_list):
+    for item in query_data:
+        query_list.append(item.find)

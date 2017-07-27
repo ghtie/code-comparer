@@ -1,3 +1,79 @@
+/*Nav Bar styles*/
+#sideBar{
+  font-size: 50px;
+
+}
+
+#main {
+    transition: margin-left .5s;
+    padding-left: 20px;
+    padding-bottom: 0;
+}
+#jhead{
+  color: #C0B283;
+  font-size: 48px;
+  font-style: italic;
+  text-align:center;
+}
+#jp1{
+  font-family: Helvetica;
+  color:#373737;
+  text-align: center;
+  text-indent: 50px;
+  font-weight: bold;
+}
+#test2{
+  text-indent: 50px;
+
+}
+#jp2 {
+  font-family: Helvetica;
+  color:black;
+  text-align: left;
+}
+header{
+  float: left;
+  width: 100%;
+  background-color: #383838;
+  color: white;
+  vertical-align: middle;
+}
+.navBar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #383838;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.navBar a {
+    padding: 10px 0px 0px 32px;
+    padding-top: 30px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.navBar a:hover {
+    color: white;
+}
+
+.navBar .closebtn {
+    position: absolute;
+    padding:0;
+    padding-top: 5px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+/*Table and heading styles*/
 body {
   font-family: Helvetica;
   font-weight: lighter;
@@ -8,15 +84,20 @@ body {
 }
 
 h1 {
-  color: #C0B283;
+  color: white;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: lighter;
+  text-align: center;
+  margin: 0;
 }
 
 h2 {
   color:#373737;
-  font-size: 24px;
+  font-size: 18px;
 }
 
-.flex-container {
+.flex-container, .flex-container-title  {
     display: -webkit-flex;
     display: flex;
     width: 100%;
@@ -30,8 +111,8 @@ h2 {
     max-height: 500
     margin: 0;
     padding: 20px;
-
 }
+
 
 .desc-col {
     font-family: Helvetica;
@@ -46,8 +127,9 @@ h2 {
     padding: 2px;
     display: none;
 }
+
 #table{
-  padding: 50px;
+  padding: 56px;
 }
 .highlighted{
     background-color: white;

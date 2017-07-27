@@ -2,65 +2,59 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="static/index.css"></link>                                          <!-- Links css file -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>        <!-- Allows JQuery -->
-    <script type="text/javascript" src="static/index.js"></script>                                  <!-- Links javascript file -->
+  <link rel="stylesheet" href="static/index.css"></link>                                          <!-- Links css file -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>        <!-- Allows JQuery -->
+  <script type="text/javascript" src="static/index.js"></script>                                  <!-- Links javascript file -->
+  <title>CodeCompare</title>
 </head>
-
-
+<header>
+  <div id="main">
+    <span id = "sideBar" onclick="openNav()">&#9776</span><h1>CodeCompare</h1>
+  </div>
+  <div id="navBar" class="navBar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="blog-list-wrapper">{{ bloglist }}</div>
+    <a href="\">Home</a>
+    <a href="/post?page_id=0">Java</a>
+    <a href="/post?page_id=1">JavaScript</a>
+    <a href="/post?page_id=2">Python</a>
+  </div>
+</header>
 <body>
-
-    <h1 style="text-align:center"> Code Comparer Son</h1>
-    <h4 style='text-align:center'> wlecome coding blah blah we here compare code</h4>
-    <h2 style="text-align:center">Choose the code you would like to compare syntax</h2>
+  <h4 style='text-align:center'> We compare code syntax......................hypothetically</h4>
+    <!--<h2 style="text-align:center">Choose the code you would like to compare</h2>-->
+  <div id= "table">
     <input type='checkbox' id='java' class=language-box value='show'>Java                           <!--Check boxes for languages-->
     <input type='checkbox' id='javascript' class=language-box value='show'>Javascript
     <input type='checkbox' id='python' class=language-box value='show'>Python
 
-    <div class="flex-container">
-        <div class="desc-col" style='text-align:center' id='desc-title'>Category</div>               <!--Column title cells-->
-        <div class="j-col" style='text-align:center' id='java-title'>Java</div>
-        <div class="js-col" style='text-align:center' id='javascript-title'>Javascript</div>
-        <div class="p-col" style='text-align:center' id='python-title'>Python</div>
+    <div class="flex-container-title">
+      <div class="desc-col" style='text-align:center' id='desc-title'>Category</div>               <!--Column title cells-->
+      <div class="j-col" style='text-align:center' id='java-title'>Java</div>
+      <div class="js-col" style='text-align:center' id='javascript-title'>Javascript</div>
+      <div class="p-col" style='text-align:center' id='python-title'>Python</div>
     </div>
 
-    <!--<div class="flex-container">
-        <div class="j-col" >
-            box 1
-            <div id="panel">aint no example</div>
-        </div>
-        <div class="js-col">
-            box 2
-        </div>
-        <div class="p-col">
-            box 3
-        </div>
-    </div>-->
+    {% for i in range(0, 28) %}
+    <div class="flex-container">
+      <div class="desc-col">
+        {{ desc_items[i]}}
+      </div>
+      <div class="j-col">
+        {{ java_items[i] }}<br>
+        <div class="j-panel" id= {{ find_items_j[i] }} ><br>{{ find_items_j[i] }}</div>
+      </div>
+      <div class="js-col">
+        {{ javascript_items[i] }}<br>
+        <div class="js-panel" id= {{ find_items_js[i] }}><br>{{ find_items_js[i] }}</div>
+      </div>
+      <div class="p-col">
+        {{ python_items[i] }}<br>
+        <div class="p-panel" id= {{ find_items_p[i] }}><br>{{ find_items_p[i] }}</div>
+      </div>
+    </div>
+    {% endfor %}
 
-        {% for i in range(0, 28) %}
-        <div class="flex-container">
-            <div class="desc-col">
-                {{ desc_items[i] }}
-
-            </div>
-            <div class="j-col">
-                {{ java_items[i] }}
-                    <div id="panel">Hello world!</div>
-            </div>
-            <div class="js-col">
-                {{ javascript_items[i] }}
-            </div>
-            <div class="p-col">
-                {{ python_items[i] }}
-            </div>
-        </div>
-
-        {% endfor %}
-
-    </body>
-
-
-
-
-
-    </html>
+  </div>
+</body>
+</html>

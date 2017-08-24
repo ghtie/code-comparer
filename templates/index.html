@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="static/index.css"></link>                                          <!-- Links css file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>        <!-- Allows JQuery -->
     <script type="text/javascript" src="static/index.js"></script>                                  <!-- Links javascript file -->
-    <title>Datway</title>
+    <title>CodeCompare</title>
 </head>
 
 
@@ -13,12 +13,12 @@
 
 <header>
     <div id="main">
-        <span id = "sideBar" onclick="openNav()">&#9776</span><h2>Code Comparer Son</h2>
-        <h4 style='text-align:center'>wlecome coding blah blah we here compare code</h4>
+        <span id = "sideBar" onclick="openNav()">&#9776</span><h2>CodeCompare</h2>
+        <h4 style='text-align:center'>Welcome. We compare code.</h4>
     </div>
     <div id="navBar" class="navBar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="blog-list-wrapper">{{ bloglist }}</div>
+        <div class="blog-list-wrapper">{{ languagelist }}</div>
         <a href="\">Home</a>
         <a href="/post?page_id=0">Java</a>
         <a href="/post?page_id=1">Javascript</a>
@@ -27,16 +27,18 @@
 </header>
 
 <body>
-    <div id='table'>
-        <input type='checkbox' id='java' class=language-box value='show'>Java                           <!--Check boxes for languages-->
-        <input type='checkbox' id='javascript' class=language-box value='show'>Javascript
-        <input type='checkbox' id='python' class=language-box value='show'>Python
+    <div id="table">
+      <div id="checkbox">
+        <input type='checkbox' class=language-box value='show'>Java                           <!--Check boxes for languages-->
+        <input type='checkbox' class=language-box value='show'>Javascript
+        <input type='checkbox' class=language-box value='show'>Python
+      </div>
 
         <div class="flex-container-title">
-            <div class="desc-col" style='text-align:center' id='desc-title'>Category</div>               <!--Column title cells-->
-            <div class="j-col" style='text-align:center' id='java-title'>Java</div>
-            <div class="js-col" style='text-align:center' id='javascript-title'>Javascript</div>
-            <div class="p-col" style='text-align:center' id='python-title'>Python</div>
+            <div class="desc-col" style='text-align:center'>Category</div>               <!--Column title cells-->
+            <div class="j-col" style='text-align:center'>Java</div>
+            <div class="js-col" style='text-align:center'>Javascript</div>
+            <div class="p-col" style='text-align:center'>Python</div>
         </div>
 
         {% for i in range(0, 28) %}

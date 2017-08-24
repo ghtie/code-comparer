@@ -1,3 +1,12 @@
+body {
+  font-family: Helvetica;
+  font-weight: lighter;
+  font-size: 14px;
+  color: #373737;
+  background-color: #F4F4F4;
+  padding-top: 35px;
+}
+
 /*Nav Bar styles*/
 #sideBar{
   font-size: 32px;
@@ -8,29 +17,7 @@
     padding-left: 20px;
     padding-bottom: 0;
     color: #C0B283;
-}
-
-#jhead {
-  color: #C0B283;
-  font-size: 48px;
-  font-style: italic;
-  text-align: center;
-  font-weight: lighter;
-}
-
-#jp1 {
-  font-family: Helvetica;
-  color:#373737;
-  text-align: center;
-  text-indent: 50px;
-  font-weight: lighter;
-  padding-left: 45px;
-  padding-right: 45px;
-  font-size: 16px;
-}
-
-#test2 {
-  text-indent: 50px;
+    margin-top: 20px;
 }
 
 header {
@@ -38,6 +25,8 @@ header {
   width: 100%;
   color: white;
   vertical-align: middle;
+  margin-top: -35px;
+  background-color: #383838;
 }
 
 .navBar {
@@ -50,6 +39,7 @@ header {
     background-color: #383838;
     overflow-x: hidden;
     transition: 0.5s;
+
 }
 
 .navBar a {
@@ -63,7 +53,7 @@ header {
 }
 
 .navBar a:hover {
-    color: white;
+    color: #C0B283;
 }
 
 .navBar .closebtn {
@@ -75,24 +65,14 @@ header {
     margin-left: 50px;
 }
 
-
-
-
-body {
-  font-family: Helvetica;
-  font-weight: lighter;
-  font-size: 14px;
-  color: #373737;
-  background-color: #F4F4F4;
-}
-
+/*Lanuguage Page Descriptions*/
 h2 {
     font-style: italic;
     font-weight: lighter;
     font-size: 48px;
     color: #C0B283;
     text-align: center;
-    margin: 0;
+    margin-top: -35px;
 }
 
 h4 {
@@ -104,6 +84,36 @@ a {
     color: #DCD0C0;
 }
 
+#pgHeading {
+  color: #C0B283;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 400;
+  padding-top: 150px;
+}
+
+#pgDescription{
+  font-family: Helvetica;
+  color:#373737;
+  text-align: left;
+  text-indent: 50px;
+  font-weight: lighter;
+  padding-left: 45px;
+  padding-right: 45px;
+  line-height: 2.5;
+  font-size: 16px;
+}
+
+/*Dynamic Table*/
+#checkbox{
+  padding-top: 100px;
+  padding-bottom: 30px;
+}
+#table{
+  padding: 10px;
+  margin: 50px;
+}
+
 .flex-container, .flex-container-title {
     display: -webkit-flex;
     display: flex;
@@ -111,8 +121,13 @@ a {
     height: 100%;
     font-family: 'Courier New';
 }
+.highlighted{
+    background-color: white;
+}
 
 .j-col, .js-col, .p-col {
+    font-family: Helvetica;
+    color: #373737;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -120,17 +135,14 @@ a {
 }
 
 .desc-col {
+    font-family: Helvetica;
+    font-family: Helvetica;
+    font-weight: bold;
+    color: #373737;
     width: 800px;
     height: 100%;
     margin: 0;
-    padding: 20px;
-    font-family: Helvetica;
-    font-weight: lighter;
-}
-
-#desc-title, #java-title, #javascript-title, #python-title {
-    font-family: Helvetica;
-    color: #373737;
+    padding: 30px;
 }
 
 .j-panel, .js-panel, .p-panel {
@@ -138,12 +150,4 @@ a {
     display: none;
     font-family: Helvetica;
     color: #DCD0C0;
-}
-
-#table{
-  padding: 10px;
-}
-
-.highlighted{
-    background-color: white;
 }

@@ -8,16 +8,19 @@
     <title>Datway</title>
 </head>
 
+
+
 <header>
     <div id="main">
-        <span id = "sideBar" onclick="openNav()">&#9776</span>
+        <span id = "sideBar" onclick="openNav()">&#9776</span><h2>CodeCompare</h2>
+        <h4 style='text-align:center'>Welcome. We compare code.</h4>
     </div>
     <div id="navBar" class="navBar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="blog-list-wrapper">{{languagelist}}</div>
+        <div>{{ languagelist }}</div>
         <a href="\">Home</a>
         <a href="/post?page_id=0">Java</a>
-        <a href="/post?page_id=1">JavaScript</a>
+        <a href="/post?page_id=1">Javascript</a>
         <a href="/post?page_id=2">Python</a>
     </div>
 </header>

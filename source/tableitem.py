@@ -1,6 +1,6 @@
 from google.appengine.ext import ndb
 
-
+#sets the categories in the datastore
 class TableItem(ndb.Model):
     syntax = ndb.StringProperty()
     language = ndb.StringProperty()
@@ -18,6 +18,7 @@ def construct(syntax1, language1, category1, find1, description1, example1):
                     description = description1,
                     example = example1)
 
+#lists example links under certain categories
 def linkHelper(link):
     return '<a href="' + link + '" target="_blank">example</a>'
 

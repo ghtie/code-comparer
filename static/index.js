@@ -1,10 +1,24 @@
 $(document).ready(setup);
 
 //Setup Functions
-function loadChecked() {                               //Loads window with boxes default checked
+function setup() {
+    syntaxChoice();
+    loadChecked();
+    handleHighlight();
+    /*$(".j-panel").hide();
+    $(".js-panel").hide();
+    $(".p-panel").hide();*/
+    handleExample();
+    openNav();
+    closeNav();
+}
+
+//Loads window with boxes default checked
+function loadChecked() {
     $(".language-box").prop("checked", true);
 }
-//navigation bar
+
+//Navigation bar open & close
 function openNav() {
     document.getElementById("navBar").style.width = "250px";
 }
@@ -12,24 +26,27 @@ function openNav() {
 function closeNav() {
     document.getElementById("navBar").style.width = "0";
 }
-function syntaxChoice() {                               //When checkbox selected, show language column
-    $("#java").click(displayJava);
-    $("#javascript").click(displayJavascript);
-    $("#python").click(displayPython);
+
+//Calls other functions to show/ hide the column after checkbox is clicked
+function syntaxChoice() {
+    $("#javaBox").click(displayJava);
+    $("#jSBox").click(displayJavascript);
+    $("#pythonBox").click(displayPython);
 }
 
-function handleHighlight() {                            //When mouse hovered over row, highlight row
+//When mouse hovered over row, highlight row
+function handleHighlight() {
     $(".flex-container").hover(addHighlight)
     $(".flex-container").mouseleave(removeHighlight)
 }
 
-function handleExample() {                              //"#idPanel"
+//Expands the boxes to reveal example links
+function handleExample() {
     $(".flex-container").click(slidePanel);
 }
 
-
-//Helper Functions
-function displayJava() {                                //Toggle Functions
+//Shows or hide the columns
+function displayJava() {
     $('.j-col').fadeToggle(700);
 }
 function displayJavascript() {
@@ -39,28 +56,17 @@ function displayPython() {
     $('.p-col').fadeToggle(700);
 }
 
-function addHighlight() {                               //Highlight Functions
+//Highlight functions when mouse hovers over elements
+function addHighlight() {
     $(this).addClass("highlighted");
 }
 function removeHighlight(){
     $(this).removeClass("highlighted");
 }
 
-function slidePanel() {                                 //Panel Slide Functions
-    $(this).find(".j-panel").slideToggle("slow");
-    $(this).find(".js-panel").slideToggle("slow");
-    $(this).find(".p-panel").slideToggle("slow");
+//Panel slide functions
+function slidePanel() {
+    $(this).find(".j-panel").slideToggle("medium");
+    $(this).find(".js-panel").slideToggle("medium");
+    $(this).find(".p-panel").slideToggle("medium");
 }
-
-
-function setup() {
-    syntaxChoice();
-    loadChecked();
-    handleHighlight();
-    $(".j-panel").hide();
-    $(".js-panel").hide();
-    $(".p-panel").hide();
-    handleExample();
-    openNav();
-    closeNav();
-    }

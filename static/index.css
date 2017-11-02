@@ -12,6 +12,10 @@ body {
   font-size: 32px;
 }
 
+#sideBar a:hover{
+  color: black;
+}
+
 #main {
     transition: margin-left .5s;
     padding-left: 20px;

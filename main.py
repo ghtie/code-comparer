@@ -62,6 +62,7 @@ class MainHandler(webapp2.RequestHandler):
         queryToListExample(javascript_data, javascript_ex_list)
         queryToListExample(python_data, python_ex_list)
 
+        #refers to items in the HTML file 
         template_vars = {
             'desc_items': desc_list,
 
@@ -89,6 +90,7 @@ class SecondHandler(webapp2.RequestHandler):
         list_variables = {"languagelist": constructLanguageInfoHTML()}
         self.response.out.write(template.render(list_variables))
 
+#puts the information listed in language.py into templates
 class PostHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/languagespg.html')
@@ -117,7 +119,7 @@ app = webapp2.WSGIApplication([
 
 
 
-
+#sets the post url to the number that corresponds to the array number
 def constructLanguageInfoHTML():
     html_string = "<ol>\n"
     for i in range(0, len(language_list)):

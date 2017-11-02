@@ -1,11 +1,14 @@
+#displays the title and information of the other webpages
 class DisplayMoreInfo:
     def __init__(self, title, content):
         self.title = title
         self.content = content
 
+#sets the page url to the number it is in the list
     def listString(self, page_id):
         return "<a href='post?page_id=" + str(page_id) + "'>" + self.title + "</a>"
 
+#list of page info 
 language_list = [
 DisplayMoreInfo(
 "Java",
